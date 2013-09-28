@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Silex Partlet Demo</title>
+    {% for style in GLOBAL_STYLE_LIST %}
+        <link rel="stylesheet" type="text/css" href="/style/{{ style }}"/>
+    {% endfor %}
+    <script data-main="/assets/js/main" type="application/javascript" src="/assets/js/require.js"></script>
+</head>
+<body>
+{{ content|raw }}
+
+
+<script type="application/javascript">
+    {% for viewData in GLOBAL_VIEW_LIST %}
+    require(['js/{{viewData.view}}'], function (view) {
+        new view('{{viewData.id}}', {{viewData.data|raw}})
+    });
+    {% endfor %}
+</script>
+</body>
+</html>
