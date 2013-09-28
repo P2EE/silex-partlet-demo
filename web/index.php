@@ -29,8 +29,12 @@ $app->error(function (\Exception $e, $code) {
 });
 
 $app->get('/style/{name}', function($name) use ($app){
-    $file = __DIR__.'/../src/p2ee/SilexPartletDemo/Components/'.$name;
+    $dir = realpath(__DIR__.'/../src/p2ee/SilexPartletDemo/Components/').'/';
+    $file = realpath($dir.$name);
     if(!file_exists($file)){
+        return $app->abort(404, 'The style was not found.');
+    }
+    if(strpos($file,$dir)!==0){
         return $app->abort(404, 'The style was not found.');
     }
 
@@ -42,9 +46,13 @@ $app->get('/style/{name}', function($name) use ($app){
 })->assert('name', '(.*).css');
 
 $app->get('/js/{name}', function($name) use ($app){
-    $file = __DIR__.'/../src/p2ee/SilexPartletDemo/Components/'.$name;
+    $dir = realpath(__DIR__.'/../src/p2ee/SilexPartletDemo/Components/').'/';
+    $file = realpath($dir.$name);
     if(!file_exists($file)){
-        return $app->abort(404, 'The javascript file was not found.');
+        return $app->abort(404, 'The style was not found.');
+    }
+    if(strpos($file,$dir)!==0){
+        return $app->abort(404, 'The style was not found.');
     }
 
     $stream = function () use ($file) {
@@ -56,9 +64,13 @@ $app->get('/js/{name}', function($name) use ($app){
 
 
 $app->get('/assets/{name}', function($name) use ($app){
-    $file = __DIR__.'/assets/'.$name;
+    $dir = __DIR__.'/assets/';
+    $file = realpath($dir.$name);
     if(!file_exists($file)){
-        return $app->abort(404, 'The requests file was not found.');
+        return $app->abort(404, 'The style was not found.');
+    }
+    if(strpos($file,$dir)!==0){
+        return $app->abort(404, 'The style was not found.');
     }
 
     $stream = function () use ($file) {
