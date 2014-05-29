@@ -17,7 +17,23 @@ class News extends SilexPartlet {
                     'title' => 'News 1',
                     'text' => 'Lorem ipsum',
                 ]
-            )
+            ),
+            new PartletRequirement(
+                'newsItems',
+                NewsItem::class,
+                [
+                'title' => 'News 2',
+                'text' => 'dolor sit amet',
+                ]
+            ),
+            new PartletRequirement(
+                'newsItems',
+                NewsItem::class,
+                [
+                'title' => 'News third',
+                'text' => 'consectetur adipiscing elit',
+                ]
+            ),
         ];
     }
 
