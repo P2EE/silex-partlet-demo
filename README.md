@@ -10,4 +10,5 @@ try the example URLs:
 
 * /home/Home.html
 * /content/News.html
+* /content/NewsItem.html?title=hawhaw&text=how%20how%20how
 
