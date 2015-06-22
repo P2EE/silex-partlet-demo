@@ -18,11 +18,10 @@ class JsonFileResolver implements Resolver
 
     /**
      * @param Requirement|JsonFileRequirement $requirement
-     * @param Preparer                        $preparer
      *
      * @return mixed
      */
-    public function resolve(Requirement $requirement, Preparer $preparer)
+    public function resolve(Requirement $requirement)
     {
         $result = json_decode(file_get_contents($requirement->getFile()), true);
 
