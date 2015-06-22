@@ -43,4 +43,8 @@ class JsonFileRequirement extends Requirement
     {
         return null;
     }
-} 
+
+    public function getPrefills()
+    {
+    }
+}
