@@ -96,7 +96,6 @@ $app->get('/{name}', function ($name) use ($app) {
     }
 
     $container = $app['partlet']->get($partlet->getContainerPartlet(), true);
-    $app['partlet']->prepare($partlet);
     $app['partlet']->prepare($container, ['content' => $partlet]);
 
     return $app['partlet']->render($container);
