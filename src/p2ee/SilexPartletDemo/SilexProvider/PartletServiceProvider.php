@@ -2,8 +2,8 @@
 namespace p2ee\SilexPartletDemo\SilexProvider;
 
 use p2ee\SilexPartletDemo\PartletService;
-use Silex\Application;
-use Silex\ServiceProviderInterface;
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 
 class PartletServiceProvider implements ServiceProviderInterface {
 
@@ -15,20 +15,9 @@ class PartletServiceProvider implements ServiceProviderInterface {
      *
      * @param Application $app An Application instance
      */
-    public function register(Application $app) {
-        $app['partlet'] = $app->share(function () use ($app) {
+    public function register(Container $app) {
+        $app['partlet'] = function () use ($app) {
             return new PartletService($app['partlets.baseNamespace'], $app['rg.injektor'], $app['twig']);
-        });
-    }
-
-    /**
-     * Bootstraps the application.
-     *
-     * This method is called after all services are registered
-     * and should be used for "dynamic" configuration (whenever
-     * a service must be requested).
-     */
-    public function boot(Application $app) {
-
+        };
     }
 }

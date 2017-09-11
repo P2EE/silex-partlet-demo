@@ -16,7 +16,7 @@ $app->register(new p2ee\SilexPartletDemo\SilexProvider\PartletServiceProvider(),
     'partlets.baseNamespace' => '\p2ee\SilexPartletDemo\Components',
 ]);
 
-$app->error(function (\Exception $e, $code) {
+$app->error(function (\Exception $e, $request, $code) {
     switch ($code) {
         case 404:
             $message = 'The requested page could not be found.';
