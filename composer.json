@@ -16,7 +16,7 @@
         "p2ee/preparables": "@dev",
         "rg/injektor": "~1.0",
         "silex/silex": "~2.0",
-        "twig/twig": "~2.4"
+        "twig/twig": "~3.11"
     },
     "require-dev": {
         "phpunit/phpunit": "~6.3"
